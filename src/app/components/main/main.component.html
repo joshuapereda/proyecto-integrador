@@ -1,0 +1,98 @@
+<div class="todoist-container">
+  <!-- Sidebar -->
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav [mode]="'side'" [opened]="isSidebarOpen" class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <mat-icon>check_circle</mat-icon>
+          <span>Todoist</span>
+        </div>
+      </div>
+      <mat-nav-list>
+        <button mat-button color="primary" class="add-task-button" (click)="createTask()" [disabled]="!selectedProject">
+          <mat-icon>add</mat-icon>
+          Add task
+        </button>
+        <a mat-list-item (click)="loadTasks()">
+          <mat-icon matListItemIcon>inbox</mat-icon>
+          <span matListItemTitle>Inbox</span>
+        </a>
+        <a mat-list-item (click)="loadTaskForToday()">
+          <mat-icon matListItemIcon>today</mat-icon>
+          <span matListItemTitle>Today</span>
+        </a>
+        <a mat-list-item (click)="loadUpcomingTasks()">
+          <mat-icon matListItemIcon>event</mat-icon>
+          <span matListItemTitle>Upcoming</span>
+        </a>
+      </mat-nav-list>
+      <mat-divider></mat-divider>
+      <h4 matSubheader style="margin-left: 7%;margin-top: 4%;">Projects</h4>
+      <mat-nav-list>
+        <a mat-list-item *ngFor="let project of projects"  (click)="loadTasksByProject(project.idProyecto || 0)">
+          <mat-icon matListItemIcon [style.color]="project.colors?.name">folder</mat-icon>
+          <span matListItemTitle>{{ project.nombre }}</span>
+        </a>
+        <a mat-list-item (click)="openCreateProjectDialog()">
+          <mat-icon matListItemIcon>add</mat-icon>
+          <span matListItemTitle>Add Project</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <!-- Top Bar -->
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-form-field appearance="outline" class="search-field" style="padding-left: 18%; margin-top: 2%;">
+          <mat-label>Search</mat-label>
+          <input matInput type="search" >
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <span class="toolbar-spacer"></span>
+        <button mat-icon-button>
+          <mat-icon>add</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>settings</mat-icon>
+        </button>
+        <button mat-raised-button color="accent">Upgrade</button>
+        <button mat-icon-button class="user-avatar"  (click)="toggleSettings()">
+          {{userInitial}}
+        </button>
+          <div class="settings-menu" *ngIf="showSettings">
+            <button (click)="logout()">Logout</button>
+          </div>
+      </mat-toolbar>
+
+      <!-- Main Content -->
+
+
+      <div class="main-content">
+        <mat-list>
+          <mat-list-item *ngFor="let task of tasks" class="add-task-bar">
+            <mat-checkbox >
+              <span matListItemTitle>{{ task.nombre }}</span>
+              <p matListItemLine>{{ task.descripcion }}</p>
+              <p class="task-priority">{{ task.fecha_vencimiento | date: 'MMM d'}}</p>
+            </mat-checkbox>
+          </mat-list-item>
+        </mat-list>
+        <mat-toolbar class="add-task-bar" >
+          <button mat-button color="primary" class="add-task-button" (click)="createTask()" [disabled]="!selectedProject">
+            <mat-icon>add</mat-icon>
+            Add task
+          </button>
+        </mat-toolbar>
+      </div>
+
+      <!-- Add Task Bar -->
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

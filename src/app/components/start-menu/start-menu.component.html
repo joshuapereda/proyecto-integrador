@@ -1,0 +1,63 @@
+<div class="start-menu-container">
+  <header>
+    <mat-toolbar color="primary">
+      <span class="logo">Todoist </span>
+      <span class="spacer"></span>
+      <button mat-button (click)="navigateToLogin()">Iniciar sesión</button>
+      <button mat-raised-button color="accent" (click)="navigateToRegister()">Empieza gratis</button>
+    </mat-toolbar>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Organiza tu trabajo y tu vida, por fin.</h1>
+        <p>Mantén la concentración, la organización y la tranquilidad con Todoist. La aplicación de gestión de tareas y listas de tareas número uno del mundo.</p>
+        <button mat-raised-button color="primary" (click)="navigateToRegister()">Empieza gratis</button>
+      </div>
+      <div class="hero-image">
+        <img src="../assets/imgs/calendar.jpg" alt="Todoist app screenshot">
+      </div>
+    </section>
+
+    <section class="features">
+      <h2>Consigue tranquilidad con Todoist</h2>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <mat-icon>check_circle</mat-icon>
+          <h3>Obtén una visión general clara</h3>
+          <p>Organiza y planifica usando las potentes e intuitivas funciones de Todoist.</p>
+        </div>
+        <div class="feature-item">
+          <mat-icon>Dispositivos</mat-icon>
+          <h3>Comienza desde cualquier lugar</h3>
+          <p>Accede a Todoist desde cualquier dispositivo, con sincronización en tiempo real en todos tus dispositivos.</p>
+        </div>
+        <div class="feature-item">
+          <mat-icon>Grupo</mat-icon>
+          <h3>Colabora con cualquier persona</h3>
+          <p>Comparte proyectos, asigna tareas y colabora con cualquier persona en Todoist.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">Todoist Clone</div>
+      <div class="footer-links">
+        <a href="#">Acerca de</a>
+        <a href="#">Características</a>
+        <a href="#">Precios</a>
+        <a href="#">Ayuda</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><mat-icon>facebook</mat-icon></a>
+        <a href="#"><mat-icon>instagram</mat-icon></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023 Todoist Clone. Reservados todos los derechos</p>
+    </div>
+  </footer>
+</div>

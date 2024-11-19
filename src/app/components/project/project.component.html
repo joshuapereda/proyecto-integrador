@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Add project</h2>
+<mat-dialog-content>
+  <form [formGroup]="projectForm">
+    <!-- Campo de nombre del proyecto -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="project.nombre" formControlName="nombre" placeholder="Enter project name" required>
+      <mat-error *ngIf="projectForm.get('nombre')?.hasError('required')">
+        Project name is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo de color -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Color</mat-label>
+      <mat-select [(ngModel)]="project.colors!.idColor" formControlName="validaColor">
+        <mat-option value="-1"> [Seleccione] </mat-option>
+        <mat-option *ngFor="let x of colors" [value]="x.idColor">
+            {{x.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Campo de favorito usando mat-slide-toggle -->
+    <p><mat-slide-toggle labelPosition="after" [checked]="project.favorito === 'Si'"
+      (change)="onFavoriteChange()">añadir a favoritos</mat-slide-toggle></p>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="registra()" [disabled]="!projectForm.valid">Add</button>
+</mat-dialog-actions>
